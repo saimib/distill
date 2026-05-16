@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Distill",
+  "version": "1.0.0",
+  "description": "Distill any YouTube video into key insights using Gemini AI",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Distill – Settings"
+  }
+}

@@ -1,0 +1,357 @@
+/* ── Distill Button ─────────────────────────────────────────────────────── */
+
+#distill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 5px 13px;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  font-family: 'YouTube Sans', 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+#distill-btn:hover {
+  background: #272727;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+#distill-btn.distill-btn-active {
+  background: #fff;
+  color: #0f0f0f;
+  border-color: #fff;
+}
+
+.distill-btn-icon {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ── Panel ──────────────────────────────────────────────────────────────── */
+
+#distill-panel {
+  display: none;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  border-radius: 12px;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: 'YouTube Sans', 'Roboto', sans-serif;
+  color: #f1f1f1;
+  overflow: hidden;
+  max-width: 720px;
+}
+
+#distill-panel.distill-open {
+  display: block;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.distill-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #181818;
+}
+
+.distill-logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.distill-modes {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+.distill-mode {
+  padding: 5px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #aaa;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.distill-mode:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.distill-mode.active {
+  background: #fff;
+  color: #0f0f0f;
+  border-color: #fff;
+  font-weight: 600;
+}
+
+.distill-close {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.distill-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────── */
+
+.distill-body {
+  padding: 20px;
+  min-height: 80px;
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+.distill-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.distill-body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+/* Idle state */
+.distill-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.distill-idle p {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Run button */
+.distill-run-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  background: #fff;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.distill-run-btn:hover {
+  opacity: 0.88;
+}
+
+/* Loading */
+.distill-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.distill-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: distill-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes distill-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Result */
+.distill-result {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #e0e0e0;
+}
+
+.distill-result .distill-heading {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 16px 0 6px;
+}
+
+.distill-result .distill-list {
+  margin: 8px 0 8px 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.distill-result .distill-list li {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+  color: #e0e0e0;
+}
+
+.distill-result .distill-list li::before {
+  content: '•';
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.distill-result .distill-num {
+  color: #fff;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.distill-result .distill-p {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+/* Actions row below result */
+.distill-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.distill-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.distill-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.distill-rerun {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.distill-rerun:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  opacity: 1;
+}
+
+/* Error */
+.distill-error {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.distill-error p {
+  margin: 0;
+  color: #ff6b6b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* YouTube light theme support */
+html[dark="false"] #distill-btn,
+:root:not([dark]) #distill-btn {
+  background: #f2f2f2;
+  color: #0f0f0f;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+html[dark="false"] #distill-btn.distill-btn-active,
+:root:not([dark]) #distill-btn.distill-btn-active {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+html[dark="false"] #distill-panel,
+:root:not([dark]) #distill-panel {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #0f0f0f;
+}
+
+html[dark="false"] .distill-header,
+:root:not([dark]) .distill-header {
+  background: #f8f8f8;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html[dark="false"] .distill-logo,
+:root:not([dark]) .distill-logo {
+  color: #0f0f0f;
+}
+
+html[dark="false"] .distill-mode,
+:root:not([dark]) .distill-mode {
+  color: #606060;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+html[dark="false"] .distill-mode.active,
+:root:not([dark]) .distill-mode.active {
+  background: #0f0f0f;
+  color: #fff;
+  border-color: #0f0f0f;
+}
+
+html[dark="false"] .distill-result,
+:root:not([dark]) .distill-result {
+  color: #0f0f0f;
+}
+
+html[dark="false"] .distill-result .distill-p,
+:root:not([dark]) .distill-result .distill-p {
+  color: #333;
+}
+
+html[dark="false"] .distill-run-btn,
+:root:not([dark]) .distill-run-btn {
+  background: #0f0f0f;
+  color: #fff;
+}
